@@ -18,6 +18,7 @@ expert-system/
 └── frontend/
     ├── index.html            <- the web form (same questions as CLIPS)
     ├── style.css             <- styling
+    ├── root.css              <- styling (reusable components)
     └── script.js             <- dynamic fields, validation, fact generation
 ```
 
