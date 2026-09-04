@@ -1,0 +1,450 @@
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+a { color: var(--accent); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--surface-sunk);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  color: var(--ink);
+}
+
+/* =====================================================================
+   LAYOUT SHELL
+   ===================================================================== */
+.trail-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+.hero {
+  margin-bottom: 3.5rem;
+}
+
+.hero-kicker {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.1rem;
+  color: var(--ink);
+}
+
+.hero-lede {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* =====================================================================
+   THE TRAIL  (vertical line + waypoint markers connecting sections)
+   ===================================================================== */
+.trail {
+  position: relative;
+}
+
+
+.waypoint {
+  position: relative;
+  margin-bottom: 2.25rem;
+}
+
+.waypoint-marker {
+  position: absolute;
+  left: -2.25rem;
+  top: 2rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+}
+
+.waypoint-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.75rem 1.9rem;
+}
+
+.waypoint-card h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+}
+
+.section-hint {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  margin: 0 0 1.25rem;
+  max-width: 62ch;
+}
+
+/* =====================================================================
+   FORM CONTROLS
+   ===================================================================== */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.radio-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill-radio {
+  position: relative;
+}
+
+.pill-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.pill-radio span {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.pill-radio input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.pill-radio input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+select {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.field-error {
+  color: var(--rust);
+  font-size: 0.87rem;
+  margin: 0.6rem 0 0;
+  min-height: 1.1em;
+}
+
+/* =====================================================================
+   TECHNOLOGY CHECKLIST  (known techs + goal techs)
+   ===================================================================== */
+.tech-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tech-item {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.tech-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+
+.tech-item-header input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tech-name {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.tech-item.is-checked {
+  border-color: var(--accent);
+}
+
+.skill-subfield {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.22s ease, opacity 0.18s ease, padding 0.22s ease;
+  padding: 0 1rem;
+  background: var(--surface-sunk);
+}
+
+.skill-subfield.is-open {
+  max-height: 120px;
+  opacity: 1;
+  padding: 0.85rem 1rem 1rem;
+}
+
+.skill-subfield-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.55rem;
+}
+
+.skill-subfield .radio-row span {
+  padding: 0.42rem 0.85rem;
+  font-size: 0.87rem;
+}
+
+/* =====================================================================
+   SUBMIT
+   ===================================================================== */
+.submit-row {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--surface);
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.9rem;
+  width: 90%;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover { background: #275c4e; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.btn-secondary {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* =====================================================================
+   RESULTS
+   ===================================================================== */
+.results {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.results h2, .architecture-note h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.65rem;
+  margin: 0 0 0.6rem;
+}
+
+.results h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 2rem 0 0.5rem;
+}
+
+.facts-output {
+  background: var(--ink);
+  color: #DDEAE4;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.results-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.run-steps {
+  padding-left: 1.3rem;
+  color: var(--ink-soft);
+}
+
+.run-steps li { margin-bottom: 0.5rem; }
+
+.clips-output-paste {
+  width: 100%;
+  min-height: 140px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--surface);
+  resize: vertical;
+}
+
+.pasted-output-display {
+  margin-top: 1rem;
+  background: var(--surface-sunk);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+/* =====================================================================
+   ARCHITECTURE NOTE
+   ===================================================================== */
+.architecture-note {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+
+.architecture-note p { max-width: 65ch; }
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+}
+
+/* =====================================================================
+   WARNING / STATUS CHIPS (used by script.js when rendering summaries)
+   ===================================================================== */
+.status-chip {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-chip--warning {
+  background: var(--rust-soft);
+  color: var(--rust);
+}
+
+.status-chip--priority {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+/* =====================================================================
+   RESPONSIVE
+   ===================================================================== */
+@media (max-width: 560px) {
+  .trail-page { padding: 2rem 1.1rem 4rem; }
+  .two-col { grid-template-columns: 1fr; gap: 0.9rem; }
+  .waypoint-card { padding: 1.4rem 1.25rem 1.5rem; }
+  .waypoint-marker { left: -1.75rem; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

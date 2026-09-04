@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Stack Developer Learning Planning and Scheduling Expert System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="root.css">
+
+</head>
+<body>
+
+<div class="trail-page">
+
+  <!-- ============================================================ -->
+  <!-- HERO / INTRODUCTION                                          -->
+  <!-- ============================================================ -->
+  <header class="hero">
+    <p class="hero-kicker">A planning &amp; scheduling expert system</p>
+    <h1>Full-Stack Developer<br>Learning Plan</h1>
+    <p class="hero-lede">
+      Tell it what you already know, what you want to learn, and how much
+      time you have. An expert-knowledge rule engine works out what to
+      learn first, what's missing, and builds you a week-by-week study
+      schedule that fits your life.
+    </p>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- FORM                                                         -->
+  <!-- ============================================================ -->
+  <main>
+    <form id="planner-form" novalidate>
+
+      <!-- Trail line runs behind these sections -->
+      <div class="trail">
+
+        <!-- SECTION A: overall skill level -->
+        <section class="waypoint" data-waypoint="1">
+          <div class="waypoint-card">
+            <h2>Where are you starting from?</h2>
+            <p class="section-hint">Your overall comfort level with web development so far.</p>
+
+            <fieldset class="radio-row">
+              <legend class="visually-hidden">Overall web development skill level</legend>
+              <label class="pill-radio">
+                <input type="radio" name="overall-skill" value="Beginner" required>
+                <span>Beginner</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="overall-skill" value="Intermediate">
+                <span>Intermediate</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="overall-skill" value="Advanced">
+                <span>Advanced</span>
+              </label>
+            </fieldset>
+            <p class="field-error" data-error-for="overall-skill"></p>
+          </div>
+        </section>
+
+        <!-- SECTION B: known technologies + per-tech skill -->
+        <section class="waypoint" data-waypoint="2">
+          <div class="waypoint-card">
+            <h2>What do you already know?</h2>
+            <p class="section-hint">
+              Check anything you have real experience with, then rate your
+              level in each one individually.
+            </p>
+
+            <div id="known-tech-list" class="tech-checklist">
+              <!-- injected by script.js: one .tech-item per topic -->
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION C: topics to learn -->
+        <section class="waypoint" data-waypoint="3">
+          <div class="waypoint-card">
+            <h2>What do you want to learn?</h2>
+            <p class="section-hint">
+              Pick your goals. If a prerequisite is missing, the system
+              will tell you and reorder things so you're not stuck.
+            </p>
+
+            <div id="goal-tech-list" class="tech-checklist tech-checklist--goals">
+              <!-- injected by script.js -->
+            </div>
+            <p class="field-error" data-error-for="goals"></p>
+          </div>
+        </section>
+
+        <!-- SECTION D: available time -->
+        <section class="waypoint" data-waypoint="4">
+          <div class="waypoint-card">
+            <h2>How much time do you have?</h2>
+            <p class="section-hint">Be realistic, the schedule will only ever use what you tell it here.</p>
+
+            <div class="two-col">
+              <div>
+                <label for="hours-per-day" class="field-label">Hours you can study per day</label>
+                <select id="hours-per-day" name="hours-per-day" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="1">1 hour</option>
+                  <option value="2">2 hours</option>
+                  <option value="3">3 hours</option>
+                  <option value="4">4 hours or more</option>
+                </select>
+              </div>
+              <div>
+                <label for="days-per-week" class="field-label">Days you can study per week</label>
+                <select id="days-per-week" name="days-per-week" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="1">1 to 2 days</option>
+                  <option value="3">3 to 4 days</option>
+                  <option value="5">5 to 6 days</option>
+                  <option value="7">7 days</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="radio-row radio-row--wrap">
+              <legend class="field-label">Preferred study time</legend>
+              <label class="pill-radio">
+                <input type="radio" name="preferred-time" value="Morning" required>
+                <span>Morning</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="preferred-time" value="Afternoon">
+                <span>Afternoon</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="preferred-time" value="Evening">
+                <span>Evening</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="preferred-time" value="NoPreference">
+                <span>No preference</span>
+              </label>
+            </fieldset>
+            <p class="field-error" data-error-for="time-fields"></p>
+          </div>
+        </section>
+
+        <!-- SECTION E: target duration -->
+        <section class="waypoint" data-waypoint="5">
+          <div class="waypoint-card">
+            <h2>What's your target?</h2>
+            <p class="section-hint">How long do you want to give yourself to reach Full-Stack Developer level?</p>
+
+            <fieldset class="radio-row">
+              <legend class="visually-hidden">Target duration</legend>
+              <label class="pill-radio">
+                <input type="radio" name="target-duration" value="3" required>
+                <span>3 months</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="target-duration" value="6">
+                <span>6 months</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="target-duration" value="9">
+                <span>9 months</span>
+              </label>
+              <label class="pill-radio">
+                <input type="radio" name="target-duration" value="12">
+                <span>12 months</span>
+              </label>
+            </fieldset>
+            <p class="field-error" data-error-for="target-duration"></p>
+          </div>
+        </section>
+
+      </div><!-- /.trail -->
+
+      <div class="submit-row">
+        <button type="submit" class="btn-primary">Generate My Learning Plan</button>
+      </div>
+    </form>
+
+    <!-- ============================================================ -->
+    <!-- RESULTS                                                       -->
+    <!-- ============================================================ -->
+    <section id="results" class="results" hidden>
+
+      <h2>Your plan, ready for the expert system</h2>
+      <p class="section-hint">
+        This browser form doesn't run CLIPS reasoning itself, the actual
+        planning and scheduling logic lives in the CLIPS program
+        (<code>main.clp</code>). What it <em>does</em> do is turn your
+        answers into CLIPS facts you can hand to that program. See
+        "How this connects to CLIPS" below for exactly why, and how.
+      </p>
+
+      <h3>1. Your generated facts file</h3>
+      <p class="section-hint">
+        Copy this, or download it as <code>user-input.clp</code>, and place
+        it in the same folder as <code>main.clp</code>.
+      </p>
+      <pre id="facts-output" class="facts-output" tabindex="0"></pre>
+      <div class="results-actions">
+        <button type="button" id="copy-facts-btn" class="btn-secondary">Copy facts</button>
+        <button type="button" id="download-facts-btn" class="btn-secondary">Download user-input.clp</button>
+      </div>
+
+      <h3>2. Run it in CLIPS</h3>
+      <ol class="run-steps">
+        <li>Open a terminal in the project's <code>clips/</code> folder.</li>
+        <li>Save the file above as <code>user-input.clp</code> in that same folder.</li>
+        <li>Start CLIPS: <code>clips</code></li>
+        <li>Load the knowledge base and your facts:
+          <code>(load "main.clp")</code> then <code>(load "user-input.clp")</code>
+        </li>
+        <li>Run it: <code>(reset)</code> then <code>(run)</code> then <code>(print-report)</code></li>
+      </ol>
+
+      <h3>3. Bring the output back here (optional)</h3>
+      <p class="section-hint">
+        Paste the text CLIPS printed after <code>(print-report)</code> below,
+        just to keep everything in one place. This box only displays what
+        you paste, it does not recompute anything.
+      </p>
+      <textarea id="clips-output-paste" class="clips-output-paste"
+                placeholder="Paste the CLIPS console output here..."></textarea>
+      <div id="pasted-output-display" class="pasted-output-display" hidden></div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ARCHITECTURE NOTE                                             -->
+    <!-- ============================================================ -->
+    <!-- <section class="architecture-note">
+      <h2>How this connects to CLIPS</h2>
+      <p>
+        This project is deliberately split into two independent pieces:
+      </p>
+      <ol class="run-steps">
+        <li><strong>This page</strong> &mdash; HTML/CSS/JavaScript. It only
+          collects your answers, checks them, shows/hides the per-technology
+          skill questions, and formats results for display.</li>
+        <li><strong>The CLIPS expert system</strong> (<code>clips/main.clp</code>)
+          &mdash; every actual planning decision: missing prerequisites,
+          priorities, study-hour allocation, schedule building, and the
+          target-timeframe check. All of that is real forward-chaining
+          <code>defrule</code> logic, not JavaScript.</li>
+      </ol>
+      <p>
+        A browser page cannot execute a CLIPS program directly, so for this
+        prototype the two sides talk through a plain text file of facts you
+        generate here and load into CLIPS by hand. A future version could
+        replace that manual step with a small backend service that runs
+        CLIPS and returns the results over an API &mdash; the reasoning
+        code itself would not need to change.
+      </p>
+    </section> -->
+  </main>
+
+  <footer class="site-footer">
+    <p>Full-Stack Developer Learning Planning and Scheduling Expert System - CLIPS + HTML/CSS/JS prototype.</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
