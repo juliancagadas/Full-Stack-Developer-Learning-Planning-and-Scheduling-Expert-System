@@ -5,6 +5,7 @@ available time, then uses forward-chaining CLIPS rules and expert knowledge
 to generate a personalized **learning plan** (what to learn, in what order,
 what's missing) and **study schedule** (when, how long, how many sessions).
 
+
 ---
 
 ## 1. Project folder structure

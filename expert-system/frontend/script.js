@@ -14,6 +14,7 @@
 
 (function () {
   "use strict";
+  
 
   // Must exactly match the `topic` names used in clips/main.clp
   const TOPICS = [
