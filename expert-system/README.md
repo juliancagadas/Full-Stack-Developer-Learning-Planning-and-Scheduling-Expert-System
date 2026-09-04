@@ -29,11 +29,11 @@ expert-system/
 A browser cannot execute a CLIPS program directly. So this project is split
 into two independent parts, exactly as required:
 
-1. **HTML/CSS/JS frontend** (`frontend/`) — collects the learner's answers,
+1. **HTML/CSS/JS frontend** (`frontend/`) —> collects the learner's answers,
    shows/hides the per-technology skill question, validates the form, and
    turns the answers into a small CLIPS facts file. It contains **no**
    planning or scheduling logic.
-2. **CLIPS expert system** (`clips/main.clp`) — contains every actual
+2. **CLIPS expert system** (`clips/main.clp`) —> contains every actual
    reasoning rule: prerequisite checking, priority, study-hour allocation,
    scheduling, and target-duration validation. This is where the real
    expert-system inference happens.
@@ -67,7 +67,7 @@ technologies + their individual skill levels, topics to learn, study
 hours/day, study days/week, preferred time, target duration), then
 automatically runs the rules and prints the full report.
 
-### Option B — using the web form's generated facts
+### Option B —> using the web form's generated facts
 
 1. Open `frontend/index.html` in any browser and fill out the form.
 2. Click **Generate My Learning Plan**.
@@ -134,7 +134,7 @@ selected-topic + prerequisite + topic-skill
 ```
 
 Each stage only fires once the facts it needs exist, and rule `salience`
-values keep the stages in the right order — this is genuine CLIPS forward
+values keep the stages in the right order —> this is genuine CLIPS forward
 chaining: every recommendation, priority, hour count, and schedule slot is
 an **inferred fact**, not a hard-coded message.
 
@@ -239,7 +239,7 @@ this project, so the numbers above are real engine output, not illustration.
   knowledge-acquisition notes.
 - **Days-per-week ranges**: Q6's ranges ("1 to 2 days", "3 to 4 days", "5
   to 6 days") are converted to the lower bound of each range (1, 3, 5) for
-  hour calculations — a conservative choice so the target-duration check
+  hour calculations —> a conservative choice so the target-duration check
   doesn't overpromise what the learner can actually do.
 - **"4 hours or more"** (Q5) is treated as exactly 4 hours for the same
   conservative reason.
