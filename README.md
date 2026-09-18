@@ -20,7 +20,6 @@ expert-system/
 │
 ├── clips/
 │   ├── main.clp
-│   └── user-input.clp
 │
 ├── frontend/
 │   ├── index.html
