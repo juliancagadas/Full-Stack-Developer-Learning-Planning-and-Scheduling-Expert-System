@@ -2,7 +2,7 @@
 
 A simple expert system that creates a personalized learning plan for users who want to become a Full-Stack Developer.
 
-The system uses **CLIPS** for the expert-system reasoning and **Flask** to connect CLIPS with the HTML/CSS/JavaScript frontend.
+The system uses **CLIPS** for the expert-system reasoning and **Flask** to   connect CLIPS with the HTML/CSS/JavaScript frontend.
 
 ## Technologies Used
 
