@@ -107,7 +107,7 @@ The regular Python 3.13 version is required for CLIPSpy in this project.
 
 ## Stopping the Server
 
-To stop the Flask server, press:
+To stop the Flask server, press this in your terminal:
 
 ```text
 Ctrl + C
