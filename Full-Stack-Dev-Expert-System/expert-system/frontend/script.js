@@ -81,6 +81,10 @@
       subLabel.textContent =
         "Your skill level in " + topic.label + ":";
 
+      const skillError = document.createElement("p");
+      skillError.className = "field-error";
+      skillError.dataset.errorFor = "skill-" + topic.symbol;
+
       const radioRow = document.createElement("div");
       radioRow.className = "radio-row";
 
@@ -104,6 +108,7 @@
 
       subfield.appendChild(subLabel);
       subfield.appendChild(radioRow);
+      subfield.appendChild(skillError);
 
       item.appendChild(header);
       item.appendChild(subfield);
@@ -214,10 +219,8 @@
 
       if (!getCheckedValue("skill-" + symbol)) {
         setError(
-          "overall-skill",
-          "Please rate your skill level for every technology you checked as known (missing: " +
-            symbol +
-            ")."
+          "skill-" + symbol,
+          "Please select your skill level for " + symbol + "."
         );
 
         valid = false;
