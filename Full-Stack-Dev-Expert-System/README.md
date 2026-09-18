@@ -89,16 +89,16 @@ The JavaScript only handles the user interface, form validation, sending data, a
 
 ## Important
 
-Use:
+Use: 
 
-```py -3.13 app.py
-```
+py -3.13 app.py
+
 or
 
-```py app.py
-```
+py app.py
 
-because in my own computer has both regular Python 3.13 and Python 3.13 free-threaded installed that's why im using (py -3.13 app.py).
+
+Because in my own computer has both regular Python 3.13 and Python 3.13 free-threaded installed that's why im using (py -3.13 app.py).
 
 The regular Python 3.13 version is required for CLIPSpy in this project.
 
