@@ -19,13 +19,16 @@ The system uses **CLIPS** for the expert-system reasoning and **Flask** to   con
 expert-system/
 │
 ├── clips/
-│   ├── main.clp
+│   └── main.clp
 │
 ├── frontend/
-│   ├── index.html
-│   ├── root.css
-│   ├── style.css
-│   └── script.js
+│   ├──CSS
+│   │   ├── root.css
+│   │   └── style.css
+│   ├──HTML
+│   │   └── index.html
+│   └──JAVASCRIPT
+│       └── script.js
 │
 └── python/
     └── app.py
