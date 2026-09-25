@@ -21,7 +21,7 @@ app = Flask(
 
 @app.get("/")
 def index():
-    return send_from_directory(FRONTEND_DIR, "index.html")
+    return send_from_directory(FRONTEND_DIR / "HTML","index.html")
 
 
 # ---------------------------------------------------------

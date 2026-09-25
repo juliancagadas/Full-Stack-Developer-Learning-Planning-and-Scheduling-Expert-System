@@ -623,7 +623,7 @@
 
     clearElement(container);
 
-    if (!plan.duration) {
+    if (!plan.durationCheck) {
       container.appendChild(
         createMessage("No duration information was generated.")
       );
